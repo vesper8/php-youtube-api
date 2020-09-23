@@ -347,7 +347,7 @@ class Youtube
         $API_URL = $this->getApi($endPoint = 'channels.list');
         $params = array(
             'forUsername' => $username,
-            'part' => 'id,snippet,contentDetails,statistics,invideoPromotion'
+            'part' => 'id,snippet,contentDetails,statistics'
         );
         if (count($optionalParams)) {
             $params = array_merge($params, $optionalParams);
@@ -373,7 +373,7 @@ class Youtube
         $API_URL = $this->getApi($endPoint = 'channels.list');
         $params = array(
             'id' => $id,
-            'part' => 'id,snippet,contentDetails,statistics,invideoPromotion'
+            'part' => 'id,snippet,contentDetails,statistics'
         );
         if (count($optionalParams)) {
             $params = array_merge($params, $optionalParams);
@@ -398,7 +398,7 @@ class Youtube
         $API_URL = $this->getApi($endPoint = 'channels.list');
         $params = array(
             'id' => implode(',', $ids),
-            'part' => 'id,snippet,contentDetails,statistics,invideoPromotion'
+            'part' => 'id,snippet,contentDetails,statistics'
         );
         if (count($optionalParams)) {
             $params = array_merge($params, $optionalParams);
@@ -690,7 +690,7 @@ class Youtube
         } else {
             $this->page_info = array(
                 'resultsPerPage' => $resObj->pageInfo->resultsPerPage,
-                'totalResults'   => $resObj->pageInfo->totalResults,
+                'totalResults'   => isset($resObj->pageInfo->totalResults) ? $resObj->pageInfo->totalResults : null,
                 'kind'           => $resObj->kind,
                 'etag'           => $resObj->etag,
                 'prevPageToken'     => null,
