@@ -703,7 +703,7 @@ class Youtube
                 $this->page_info['nextPageToken'] = $resObj->nextPageToken;
             }
 
-            $itemsArray = $resObj->items;
+            $itemsArray = property_exists($resObj, 'items') ? $resObj->items : [];
             if (!is_array($itemsArray) || count($itemsArray) == 0) {
                 return false;
             } else {
